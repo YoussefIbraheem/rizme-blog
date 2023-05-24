@@ -56,7 +56,7 @@ class PostResource extends Resource
                 TextColumn::make('body')
                 ->wrap(),
                 ImageColumn::make('thumbnail'),
-                TextColumn::make('users.name')
+                TextColumn::make('users.name')->label('User Name'),
             
             ])
             ->filters([
