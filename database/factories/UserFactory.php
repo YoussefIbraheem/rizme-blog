@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Factories;
-
+use Faker\Factory as Faker;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -24,9 +24,12 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $faker = Faker::create();
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
+            'access_type'=>$faker->randomElement(['user','moderator']),
+            'profile_picture'=>$faker->imageUrl(640, 480, 'animals', true),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'two_factor_secret' => null,
