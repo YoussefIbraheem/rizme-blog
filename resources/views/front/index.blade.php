@@ -13,12 +13,12 @@
             <div class="col-lg-12">
               <div class="blog-post">
                 <div class="blog-thumb">
-                  <img src="assets/images/blog-post-01.jpg" alt="">
+                  <img style="height:300px" src="{{ $post->thumbnail }}" alt="">
                 </div>
                 <div class="down-content">
                   <h4>{{ $post->title }}</h4>
                   <ul class="post-info">
-                    <li>{{ $post->users->name }}</li>
+                    <li>{{ $post->users->name }}<img class="mx-3" style="width:50px; height:45px; border-radius: 50%;" src="{{ $post->users->profile_picture }}" alt=""></li>
                     <li>{{ $post->created_at }}</li>
                     <li>12 Comments</li>
                   </ul>

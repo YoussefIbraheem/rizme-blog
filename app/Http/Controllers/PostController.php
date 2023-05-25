@@ -13,8 +13,8 @@ class PostController extends Controller
         return view('front.index', compact('posts'));
     }
     
-    public function myPosts(){
-        $posts = Post::findOrFail(Auth::user()->id);
-        return view('front.myblog', compact($posts));
+    public function myBlogPosts(){
+        $posts = Post::findOrFail();
+        return view('front.myblog' , compact('posts'));
 }
 }
