@@ -10,14 +10,15 @@
     <meta name="author" content="TemplateMo">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
 
-    <title>Stand CSS Blog by TemplateMo</title>
+    <title>Rizme Blog</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{asset("vendor/bootstrap/css/bootstrap.min.css")}}" rel="stylesheet">
 
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="{{asset("assets/css/fontawesome.css")}}">
+    <link rel="stylesheet" href="{{asset("assets/css/fontawsome/all.min.css")}}">
+    <link rel="stylesheet" href="{{asset("assets/css/fontawsome/fontawesome.css")}}">
     <link rel="stylesheet" href="{{asset("assets/css/templatemo-stand-blog.css")}}">
     <link rel="stylesheet" href="{{asset("assets/css/owl.css")}}">
     <link rel="stylesheet" href="{{asset("assets/css/style.css")}}">
@@ -64,6 +65,9 @@
                 <li class="nav-item">
                   <a class="nav-link" href="{{ url('admin/') }}">Dashboard</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url('/messages') }}">Messages</a>
+                </li>
                 @endif
                 <x-app-layout> 
                 </x-app-layout>
@@ -96,9 +100,9 @@
         </div>
         <div class="col-lg-12">
           <div class="copyright-text">
-            <p>Copyright 2020 Stand Blog Co.
+            <p>Copyright 2023 Stand Blog Co.
                   
-               | Design: <a rel="nofollow" href="https://templatemo.com" target="_parent">TemplateMo</a></p>
+               | Design: <a rel="nofollow" href="" target="_parent">Youssef</a></p>
           </div>
         </div>
       </div>
@@ -115,7 +119,8 @@
   <script src="{{ asset('assets/js/slick.js')}}"></script>
   <script src="{{ asset('assets/js/isotope.js')}}"></script>
   <script src="{{ asset('assets/js/accordions.js')}}"></script>
-
+  <script src="{{ asset('assets/js/fontawsome/all.min.js')}}"></script>
+  <script src="{{ asset('assets/js/fontawsome/fontawsome.js')}}"></script>
   <script language = "text/Javascript"> 
     cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
     function clearField(t){                   //declaring the array outside of the
