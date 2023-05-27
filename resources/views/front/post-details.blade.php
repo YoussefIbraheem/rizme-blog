@@ -29,7 +29,7 @@
                   <div class="col-lg-12">
                     <div class="blog-post">
                       <div class="blog-thumb">
-                        <img src="{{ $post->thumbnail }}" alt="">
+                        <img class="main-thumbnail" src="{{ asset($post->thumbnail) }}" alt="">
                       </div>
                       <div class="down-content">
                         <a style="pointer-events: none;" href="post-details.html"><h4>{{ $post->title }}</h4></a>
@@ -80,7 +80,7 @@
                             </div>
                             <div class="right-content">
                               <h4>{{ $comment->users->name }}<span>{{ $comment->created_at }}</span>
-                                @if ($comment->user_id == Auth::user()->id)
+                                @if ( Auth::check() &&$comment->user_id == Auth::user()->id)
                                 <form method="POST"  style="display: inline-block" action="{{ url("/delete-comment/$comment->id") }}">
                                   @csrf
                                   @method('DELETE')

@@ -1,4 +1,6 @@
+ 
  <!-- Edit Post Modal -->
+ @if(isset($posts))
  @foreach ($posts as $post )
  <div class="modal fade" id="editPost{{ $post->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -20,8 +22,12 @@
             <textarea  name="body" class="form-control" id="exampleFormControlTextarea1" rows="3">{{ $post->body }}</textarea>
           </div>
           <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Thumbnail</label>
+            <label for="exampleFormControlTextarea1" class="form-label">Add Thumbnail</label>
             <input value="{{ $post->thumbnail }}" class="form-control" type="file" name="thumbnail" id="formFile">
+          </div>
+          <div class="mb-3">
+            <label for="">Remove Photo</label>
+            <input name="checkThumbnail" type="checkbox" class="form-control">
           </div>
         </div>
         <div class="modal-footer">
@@ -58,35 +64,72 @@
   </div>
 </div>
   @endforeach
-<!-- Create Post Modal -->
-  <div class="modal fade" id="createPost" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  @endif
+    {{-- send Email modal --}}
+    @if(isset($messages))
+   @foreach ($messages as $message )
+   <div class="modal fade" id="sendMail{{ $message->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Create Post</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Send Mail</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form class="form-group" enctype="multipart/form-data" method="POST" action="{{ url("/create-post") }}">
-          @csrf
         <div class="modal-body">
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Title</label>
-            <input type="title" name="title" class="form-control" id="exampleFormControlInput1" placeholder="Title...">
-          </div>
-          <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Body</label>
-            <textarea name="body" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-          </div>
-          <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Thumbnail</label>
-            <input class="form-control" type="file" name="thumbnail" id="formFile">
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn bg-secondary btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn bg-primary btn-sm btn-primary">Create</button>
-        </div>
+          <form action="{{url("send-email/$message->id")}}" method="POST">
+            @csrf
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Email</label>
+              <input disabled value="{{ $message->email }}" type="email" class="form-control" id="exampleFormControlInput1">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label">In Response To</label>
+              <textarea disabled name="body" class="form-control" id="exampleFormControlTextarea1" rows="3">{{ $message->body }}</textarea>
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label">Email Response</label>
+              <textarea name="body" class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+            </div>
+           </div>
+           <div class="modal-footer">
+             <button type="button" class="btn bg-secondary btn-secondary" data-bs-dismiss="modal">Close</button>
+             <button type="submit" class="btn bg-primary btn-primary">Send Mail</button>
         </form>
+        </div>
       </div>
     </div>
-   
+  </div>
+   @endforeach
+   @endif
+
+   <!-- Create Post Modal -->
+<div class="modal fade" id="createPost" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Create Post</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form class="form-group" enctype="multipart/form-data" method="POST" action="{{ url("/create-post") }}">
+        @csrf
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Title</label>
+          <input type="text" name="title" class="form-control" id="exampleFormControlInput1" placeholder="Title...">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Body</label>
+          <textarea name="body" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Thumbnail</label>
+          <input class="form-control" type="file" name="thumbnail" id="formFile">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn bg-secondary btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn bg-primary btn-sm btn-primary">Create</button>
+      </div>
+      </form>
+    </div>
+  </div>

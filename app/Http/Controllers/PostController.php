@@ -29,6 +29,7 @@ class PostController extends Controller
         
         $post = Post::findorFail($id);
         $comments = Comment::where('post_id', '=', $id)->get();
+
         return view('front.post-details' , compact('post','comments'));
     }
 
@@ -74,14 +75,19 @@ class PostController extends Controller
         $thumbnail = null; // default thumbnail
         //update image name and store
         
-        if(!empty($post->thumbnail)){//check if there is an image
-            $imageDirectory = substr($post->thumbnail,8); //remove the word "storage/"
-            Storage::delete($imageDirectory);
-        }
-        if(!empty($request->thumbnail)){ //work only if thumbnail is added
+        if(!empty($request->thumbnail)){//check if there is an image newly added
+            if(!empty($post->thumbnail)){ //check if there was a photo already existing
+                $imageDirectory = substr($post->thumbnail,8); //remove the word "storage/"
+                Storage::delete($imageDirectory); //delete the image
+            }
             $thumbnail = Storage::putFile('thumbnails',$request->thumbnail);
-            $thumbnail =  'storage/'.$thumbnail;//add "storage/" to match the correct directory in html
-        } 
+            $thumbnail =  'storage/'.$thumbnail;
+        }else{
+            if(!$request->checkThumbnail){
+                $thumbnail = $post->thumbnail;
+            }
+        }
+        
         $loggedUser = Auth::user()->id;
         // save the post to the database
         $post->update([
