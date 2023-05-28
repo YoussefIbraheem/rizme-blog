@@ -1,4 +1,4 @@
-@extends('front/inc/layout')
+@extends('front.inc.layout')
 
 @section('content')
 <div class="py-5 ">
@@ -14,7 +14,11 @@
             <div class="col-lg-12">
               <div class="blog-post">
                 <div class="blog-thumb">
-                  <img class="main-thumbnail" src="{{ $post->thumbnail }}" alt="">
+                  @if (isset($post->thumbnail))
+                  <img class="main-thumbnail" src="{{ $post->thumbnail }}" alt="Thumbnail">
+                  @else
+                  <img class="main-thumbnail" src="{{ asset('storage/blank.png') }}" alt="">
+                  @endif
                 </div>
                 <div class="down-content">
                  <h4><a href="{{ url("post-details/$post->id") }}">{{ $post->title }}</a></h4> 

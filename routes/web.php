@@ -21,7 +21,8 @@ use App\Http\Controllers\MessageController;
 // });
 
 //public pages
-Route::get('/{id?}', [PostController::class,'viewHomePagePosts']);
+Route::get('/', [PostController::class,'viewHomePagePosts']);
+Route::get('/category/{id}', [PostController::class,'viewHomePagePostsByCategory']);
 Route::get('/post-details/{id}', [PostController::class,'PostDetails']);
 Route::get('/about',function (){return view('front/about');} );
 Route::get('/contact-us',[ContactController::class,'viewContactPage']);

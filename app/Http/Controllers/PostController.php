@@ -14,16 +14,21 @@ use Illuminate\Database\Eloquent\Builder;
 class PostController extends Controller
 {
     //view all posts
-    public function viewHomePagePosts($id=''){
-        if($id == ''){
-            $posts = Post::all();
-        }else{
+    public function viewHomePagePosts(){
+       
+        $posts = Post::where('published',1)->get();
+       
+        return view('front.index', compact('posts'));
+    }
+
+    // view posts with the given category
+
+    public function viewHomePagePostsByCategory($id)
+    { 
            $posts = Post::whereHas('categories' , function($query) use ($id) {
             $query->where('categories.id',$id);
            })->get();
-        }
-        //dd($posts);
-        return view('front.index', compact('posts'));
+           return view('front.index', compact('posts'));
     }
     
     //view user posts

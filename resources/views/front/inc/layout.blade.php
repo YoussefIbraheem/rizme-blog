@@ -54,7 +54,7 @@
                 <a class="nav-link" href="{{ url('/about') }}">About Us</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="">My Blog</a>
+                <a class="nav-link" href="{{ url('/my-posts') }}">My Blog</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ url('/contact-us') }}">Contact Us</a>

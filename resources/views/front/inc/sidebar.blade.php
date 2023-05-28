@@ -26,7 +26,7 @@
             <div class="content">
               <ul>
                 @foreach ($showCategories as $category)
-                <li><a href="{{ url("/$category->id") }}">{{ $category->category }}</a></li>
+                <li><a href="{{ url("category/$category->id") }}">{{ $category->category }}</a></li>
                 @endforeach
                 <li><a href="{{ url("/") }}">General</a></li>
               </ul>

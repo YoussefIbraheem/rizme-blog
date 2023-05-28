@@ -29,11 +29,12 @@
                 @foreach ($posts as $post)
                 <div class="col-lg-6">
                   <div class="blog-post">
-                    @if(isset($post->thumbnail))
-                    <div class="blog-thumb">
-                      <img class="main-thumbnail" src="{{ $post->thumbnail }}" alt="thumbnail">
-                    </div>
-                    @endif
+                    @if (isset($post->thumbnail))
+                        <img class="main-thumbnail" src="{{ $post->thumbnail }}" alt="Thumbnail">
+                        @else
+                        <img class="main-thumbnail" src="{{ asset('storage/blank.png') }}" alt="">
+                        @endif
+                    
                     <div class="down-content">
                       
                       <a href="{{ url("/post-details/$post->id") }}"><h4>{{ $post->title }}</h4></a>
@@ -41,6 +42,11 @@
                         <li><a style="pointer-events:none" href="#">{{ $post->users->name }}</a></li>
                         <li><a style="pointer-events:none" href="#">{{ $post->created_at }}</a></li>
                         <li><a style="pointer-events:none" href="#">{{ count($post->comments)}} Comments</a></li>
+                        @if($post->published)
+                        <li><a style="pointer-events:none" href="#">published</a></li>
+                        @else
+                        <li><a style="pointer-events:none" href="#"> Not published</a></li>
+                        @endif
                       </ul>
                       <p>{{ $post->body }}</p>
                       <div class="post-options">
