@@ -9,6 +9,7 @@ use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Card;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
@@ -23,7 +24,7 @@ use App\Filament\Resources\PostResource\RelationManagers;
 class PostResource extends Resource
 {
     protected static ?string $model = Post::class;
-
+    protected static ?string $navigationGroup = 'Options';
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
     public static function form(Form $form): Form
@@ -43,6 +44,9 @@ class PostResource extends Resource
                     ,
                     FileUpload::make('thumbnail')
                     ->image()
+                    ,
+                    Select::make('categories')->multiple()
+                    ->relationship('categories', 'category')
                 ])
               
             ]);
@@ -57,13 +61,14 @@ class PostResource extends Resource
                 ->wrap(),
                 ImageColumn::make('thumbnail'),
                 TextColumn::make('users.name')->label('User Name'),
+                TextColumn::make('categories.category')
             
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

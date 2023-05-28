@@ -2,28 +2,30 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Resources\CategoryResource\Pages;
+use App\Filament\Resources\CategoryResource\RelationManagers;
+use App\Models\Category;
 use Filament\Forms;
-use Filament\Tables;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
-use Filament\Resources\Table;
 use Filament\Resources\Resource;
-use Spatie\Permission\Models\Role;
+use Filament\Resources\Table;
+use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
-use App\Filament\Resources\RoleResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\RoleResource\RelationManagers;
 
-class RoleResource extends Resource
+class CategoryResource extends Resource
 {
-    protected static ?string $model = Role::class;
-    protected static ?string $navigationGroup = 'Roles and Permissions';
-    protected static ?string $navigationIcon = 'heroicon-o-finger-print';
+    protected static ?string $model = Category::class;
+    protected static ?string $navigationGroup = 'Options';
+    protected static ?string $navigationIcon = 'heroicon-o-tag';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                
+               TextInput::make('category')
             ]);
     }
 
@@ -31,13 +33,14 @@ class RoleResource extends Resource
     {
         return $table
             ->columns([
-                //
+               TextColumn::make('category')
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
@@ -54,9 +57,9 @@ class RoleResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListRoles::route('/'),
-            'create' => Pages\CreateRole::route('/create'),
-            'edit' => Pages\EditRole::route('/{record}/edit'),
+            'index' => Pages\ListCategories::route('/'),
+            'create' => Pages\CreateCategory::route('/create'),
+            'edit' => Pages\EditCategory::route('/{record}/edit'),
         ];
     }    
 }

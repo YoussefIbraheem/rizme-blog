@@ -4,15 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Comment;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Builder;
 
 class PostController extends Controller
 {
     //view all posts
-    public function viewHomePagePosts(){
-        $posts = Post::all();
+    public function viewHomePagePosts($id=''){
+        if($id == ''){
+            $posts = Post::all();
+        }else{
+           $posts = Post::whereHas('categories' , function($query) use ($id) {
+            $query->where('categories.id',$id);
+           })->get();
+        }
+        //dd($posts);
         return view('front.index', compact('posts'));
     }
     
@@ -20,7 +30,6 @@ class PostController extends Controller
     public function myBlogPosts(){
         $user = Auth::user()->id;
         $posts = Post::Where('user_id', '=', $user)->get();
-        
         return view('front.my-blog' , compact('posts'));
     }
 
@@ -44,20 +53,27 @@ class PostController extends Controller
     ]);
     $thumbnail = null; // default thumbnail
 
+    
     //create image name and store
     if(!empty($request->thumbnail)){ //work only if thumbnail is added
     $thumbnail = Storage::putFile('thumbnails',$request->thumbnail);
     $thumbnail =  'storage/'.$thumbnail;//add "storage/" to match the correct directory in html
     } 
     $loggedUser = Auth::user()->id;
-    // save the post to the database
-    Post::create([
+    
+    $newPost = Post::create([// save the post to the database
         'title'=>$request->title,
         'body'=>$request->body,
         'thumbnail'=>$thumbnail,
         'user_id'=>$loggedUser
     ]);
-
+ 
+    foreach ($request->categories as $category_id) { //save each selected category to the created post and save it in the pivot table
+        DB::table('categories_posts')->insert([
+                'post_id' => $newPost->id,
+                'category_id' => $category_id
+            ]);
+    }
     // redirect to the post's show page
     
     return redirect()->back();

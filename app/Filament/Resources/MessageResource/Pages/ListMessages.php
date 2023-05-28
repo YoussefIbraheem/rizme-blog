@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\RoleResource\Pages;
+namespace App\Filament\Resources\MessageResource\Pages;
 
-use App\Filament\Resources\RoleResource;
+use App\Filament\Resources\MessageResource;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\ListRecords;
 
-class ListRoles extends ListRecords
+class ListMessages extends ListRecords
 {
-    protected static string $resource = RoleResource::class;
+    protected static string $resource = MessageResource::class;
 
     protected function getActions(): array
     {

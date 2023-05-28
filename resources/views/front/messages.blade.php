@@ -58,5 +58,5 @@
       </tbody>
   </table>
 </section>
-@include('front.inc.modal')
+@include('front.inc.email-modal')
 @endsection

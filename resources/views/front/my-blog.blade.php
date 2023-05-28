@@ -1,4 +1,4 @@
-@extends('front/inc/layout')
+@extends('front.inc.layout')
 
 @section('content')
     <!-- Page Content -->
@@ -26,12 +26,14 @@
           <div class="col-lg-8">
             <div class="all-blog-posts">
               <div class="row">
-                @foreach ($posts as $post )
+                @foreach ($posts as $post)
                 <div class="col-lg-6">
                   <div class="blog-post">
+                    @if(isset($post->thumbnail))
                     <div class="blog-thumb">
-                      <img src="{{ $post->thumbnail }}" alt="">
+                      <img class="main-thumbnail" src="{{ $post->thumbnail }}" alt="thumbnail">
                     </div>
+                    @endif
                     <div class="down-content">
                       
                       <a href="{{ url("/post-details/$post->id") }}"><h4>{{ $post->title }}</h4></a>
@@ -46,8 +48,9 @@
                           <div class="col-lg-6">
                             <ul class="post-tags">
                               <li><i class="fa fa-tags"></i></li>
-                              <li><a href="#">Best Templates</a>,</li>
-                              <li><a href="#">TemplateMo</a></li>
+                              @foreach ($post->categories as $category )
+                              <li><a href="#">{{ $category->category }}</a>,</li>
+                              @endforeach
                             </ul>
                           </div>
                           <div class="col-lg-6">
@@ -63,6 +66,8 @@
                     </div>
                   </div>
                 </div>
+                @include('front.inc.edit-post-modal')
+                @include('front.inc.delete-post-modal')
                 @endforeach
               </div>
             </div>
@@ -71,5 +76,4 @@
         </div>
       </div>
     </section>
- @include('front.inc.modal')
 @endsection

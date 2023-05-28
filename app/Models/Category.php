@@ -8,11 +8,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Category extends Model
 {
-    protected $fillables = ['category'];
+    protected $fillable = ['category'];
 
     public function posts() : BelongsToMany 
     {
-        return $this->belongsToMany(Post::class);
+        return $this->belongsToMany(Post::class , 'categories_posts' , 'category_id' , 'post_id');
     }
+
+   
+
     use HasFactory;
 }

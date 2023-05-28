@@ -29,8 +29,9 @@
                       <div class="col-6">
                         <ul class="post-tags">
                           <li><i class="fa fa-tags"></i></li>
-                          <li><a href="#">Beauty</a>,</li>
-                          <li><a href="#">Nature</a></li>
+                          @foreach ( $post->categories as $category )
+                          <li><a href="#">{{ $category->category }}</a>,</li>
+                          @endforeach
                         </ul>
                       </div>
                       <div class="col-6">
