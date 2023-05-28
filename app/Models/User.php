@@ -28,6 +28,7 @@ class User extends Authenticatable implements FilamentUser
         'name',
         'email',
         'password',
+        'access_type'
     ];
 
     /**
@@ -65,4 +66,5 @@ class User extends Authenticatable implements FilamentUser
         return ($this->access_type == 'admin' || $this->access_type == 'moderator') && $this->hasVerifiedEmail();
     }
 
+    
 }
