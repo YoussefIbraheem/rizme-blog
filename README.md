@@ -135,7 +135,6 @@ APIs
 - http://localhost/api/get-all-posts
 - this url will return all the posts in the following instance:
 ```
-"data": [
 {
 "id": 13,
 "user_id": 5,
@@ -146,6 +145,26 @@ APIs
 "created_at": "2023-05-29T16:08:17.000000Z",
 "updated_at": "2023-05-29T16:08:17.000000Z"
 },
+{
+"id": 1,
+"user_id": 4,
+"title": "beatae",
+"thumbnail": "https://via.placeholder.com/640x480.png/00ccff?text=animals+dolorum",
+"published": 1,
+"body": "Consectetur esse et cumque et architecto corporis. Eaque praesentium animi est accusantium nesciunt. Minima non soluta repudiandae aut est. Perspiciatis minima assumenda ut consequatur eligendi.",
+"created_at": "2023-05-29T14:14:03.000000Z",
+"updated_at": "2023-05-29T14:14:03.000000Z"
+},
+{
+"id": 2,
+"user_id": 1,
+"title": "qui",
+"thumbnail": "https://via.placeholder.com/640x480.png/0044aa?text=animals+eum",
+"published": 1,
+"body": "Fuga iure aut quo qui eum tenetur qui. Corporis aperiam inventore vel aut. Quia earum omnis soluta dolores quam enim asperiores.",
+"created_at": "2023-05-29T14:14:03.000000Z",
+"updated_at": "2023-05-29T14:14:03.000000Z"
+},......
 ```
 2.Get a single Post (GET) url:
 - http://localhost:8001/api/get-single-post/{post_id}
