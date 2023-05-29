@@ -123,10 +123,10 @@ Configurations in .env file
 - MAIL_FROM_NAME=" From Rizme Blog"
 
 * whether you're using google mail or mailtrap or any other mailing services, make sure to follow any of their instructions
-//setting up google mailer requires an App password as your Gmail password will Not work for security purposes so please find the instructions in the video to generate an app password:
+- setting up google mailer requires an App password as your Gmail password will Not work for security purposes so please find the instructions in the video to generate an app password:
 https://youtu.be/T0Op3Qzz6Ms
 
-//setting up mailtrap
+- setting up mailtrap
 https://youtu.be/yIoKD8HF5rU
 
 Features
