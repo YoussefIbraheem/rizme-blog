@@ -102,7 +102,7 @@ $ php artisan queue:work
 
 Configurations in .env file
 -----
-1. basics:
+1.basics:
 --
 * inside the .env file, make sure these options are set correctly
 3. APP_URL : make sure it's set on the correct local host displayed on your PHP artisan serve terminal (i.e: if your local host is on port http://localhost:8000 make sure it's set as same)
