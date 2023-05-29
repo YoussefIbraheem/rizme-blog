@@ -11,7 +11,7 @@ class CreatePost extends CreateRecord
     protected static string $resource = PostResource::class;
 
 
-    protected function mutateFormDataBeforeCreate(array $data): array
+    protected function mutateFormDataBeforeCreate(array $data): array //auto fill user_id column
 {
     $data['user_id'] = auth()->id();
  

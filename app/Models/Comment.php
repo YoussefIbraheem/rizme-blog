@@ -11,12 +11,12 @@ class Comment extends Model
     use HasFactory;
     protected $fillable = ['body' , 'user_id' , 'post_id'];
 
-    public function posts() : BelongsTo
+    public function posts() : BelongsTo // one to many relationship (one post has many comments)
     {
         return $this->belongsTo(Post::class , 'post_id');
     }
 
-    public function users() : BelongsTo
+    public function users() : BelongsTo // one to many relationship (one user has many comments)
     {
         return $this->belongsTo(User::class , 'user_id');
     }

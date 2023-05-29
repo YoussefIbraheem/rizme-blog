@@ -18,7 +18,9 @@ class Kernel extends ConsoleKernel
 
         $schedule->call(function () {
             DB::table('messages')->where('sorted',true)->delete();
-        })->daily();
+        })->daily(); //to delete sorted cases on daily basis
+
+        $schedule->command('db:seed dailyPostSeeder')->daily(); // to post goodmorning post daily
 
     }
 

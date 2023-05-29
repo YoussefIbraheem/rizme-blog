@@ -18,7 +18,7 @@ class ContactController extends Controller
     public function sendMessage(Request $request)
     {
         $validatedData = $request->validate([
-            'name' =>'max:255',
+            'name' =>'required|string|max:255',
             'email' =>'required|string|email|max:255',
             'subject' =>'required|string|max:255',
             'body'=>'required|string|max:1000'
@@ -26,6 +26,7 @@ class ContactController extends Controller
 
         Message::create($validatedData);
         Mail::to($request->email)->send(new UserMailAuto($validatedData));
+        session()->flash('success',"Message sent successfully");
         return redirect()->back();
     }
 }

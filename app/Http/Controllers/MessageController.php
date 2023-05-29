@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\UserMail;
 use App\Models\Message;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -21,7 +22,8 @@ class MessageController extends Controller
             'body' => 'required'
         ]);
         $repliedToMessage = Message::findOrFail($id);
-        Mail::to($repliedToMessage->email)->send(new UserMail($validatedData , $repliedToMessage ));
+        Mail::to($repliedToMessage->email)->queue(new UserMail($validatedData , $repliedToMessage ));
+        session()->flash('success',"Message sent Successfully");
         return redirect()->back();
     }
 

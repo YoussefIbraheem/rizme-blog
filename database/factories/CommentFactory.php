@@ -18,11 +18,11 @@ class CommentFactory extends Factory
      */
     public function definition(): array
     {
-        $faker=Faker::create();
+        $faker=Faker::create(); //return random data
         return [
-            'body'=>$faker->paragraph(),
-            'user_id' => User::all()->random()->id,
-            'post_id' => Post::all()->random()->id,
+            'body'=>$faker->paragraph(), 
+            'user_id' => User::all()->random()->id, 
+            'post_id' => Post::all()->random()->id, 
         ];
     }
 }

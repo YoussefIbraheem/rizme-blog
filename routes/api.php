@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiPostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//get all posts api route
+Route::get('/get-all-posts',[ApiPostController::class,'getPostsApi']);
+
+//get single post api route
+Route::get('/get-single-post/{id}',[ApiPostController::class,'getSinglePostApi']);

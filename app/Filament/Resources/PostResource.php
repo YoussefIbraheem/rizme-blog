@@ -9,6 +9,7 @@ use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Card;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
@@ -23,7 +24,7 @@ use App\Filament\Resources\PostResource\RelationManagers;
 class PostResource extends Resource
 {
     protected static ?string $model = Post::class;
-
+    protected static ?string $navigationGroup = 'Options';
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
     public static function form(Form $form): Form
@@ -31,18 +32,21 @@ class PostResource extends Resource
         return $form
             ->schema([
                 Card::make()->schema([
-                    TextInput::make('title')
+                    TextInput::make('title') //post title with max length of 100 characters
                     ->required()
                     ->minLength(1)
-                    ->maxLength(100)
+                    ->maxLength(100)->required()
                     ,
-                    Textarea::make('body')
+                    Textarea::make('body')//post body with max length of 2000 characters
                     ->required()
                     ->minLength(1)
-                    ->maxLength(2000)
+                    ->maxLength(2000)->required()
                     ,
-                    FileUpload::make('thumbnail')
+                    FileUpload::make('thumbnail') //post thumbnail optional
                     ->image()
+                    ,
+                    Select::make('categories')->multiple() // post category optional
+                    ->relationship('categories', 'category')
                 ])
               
             ]);
@@ -57,12 +61,14 @@ class PostResource extends Resource
                 ->wrap(),
                 ImageColumn::make('thumbnail'),
                 TextColumn::make('users.name')->label('User Name'),
+                TextColumn::make('categories.category')
             
             ])
             ->filters([
                 //
             ])
             ->actions([
+                Tables\Actions\DeleteAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([

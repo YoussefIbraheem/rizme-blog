@@ -29,7 +29,11 @@
                   <div class="col-lg-12">
                     <div class="blog-post">
                       <div class="blog-thumb">
-                        <img class="main-thumbnail" src="{{ asset($post->thumbnail) }}" alt="">
+                        @if (isset($post->thumbnail))
+                        <img class="main-thumbnail" src="{{asset($post->thumbnail) }}" alt="Thumbnail">
+                        @else
+                        <img class="main-thumbnail" src="{{ asset('storage/blank.png') }}" alt="">
+                        @endif
                       </div>
                       <div class="down-content">
                         <a style="pointer-events: none;" href="post-details.html"><h4>{{ $post->title }}</h4></a>
@@ -37,6 +41,11 @@
                           <li><a style="pointer-events: none;" href="#">{{ $post->users->name }}</a></li>
                           <li><a style="pointer-events: none;" href="#">{{ $post->created_at }}</a></li>
                           <li><a style="pointer-events: none;" href="#">{{ count($post->comments) }} Comments</a></li>
+                        @if($post->published)
+                        <li><a style="pointer-events:none" href="#">published</a></li>
+                        @else
+                        <li><a style="pointer-events:none" href="#">Not published</a></li>
+                        @endif
                         </ul>
                         
                         <br><br>
@@ -46,15 +55,16 @@
                             <div class="col-6">
                               <ul class="post-tags">
                                 <li><i class="fa fa-tags"></i></li>
-                                <li><a href="#">Best Templates</a>,</li>
-                                <li><a href="#">TemplateMo</a></li>
+                                @foreach ($post->categories as $category )
+                                <li><a href="{{ url("/category/$category->id") }}">{{ $category->category }}</a>,</li>
+                                @endforeach
                               </ul>
                             </div>
                             <div class="col-6">
                               <ul class="post-share">
                                 <li><i class="fa fa-share-alt"></i></li>
-                                <li><a href="#">Facebook</a>,</li>
-                                <li><a href="#"> Twitter</a></li>
+                                <li><a href="http://www.facebook.com">Facebook</a>,</li>
+                                <li><a href="http://www.twitter.com"> Twitter</a></li>
                               </ul>
                             </div>
                           </div>
@@ -62,6 +72,8 @@
                       </div>
                     </div>
                   </div>
+                  @include('front.inc.error')
+                  @include('front.inc.success')
                   <div class="col-lg-12">
                     <div class="sidebar-item comments">
                       <div class="sidebar-heading">

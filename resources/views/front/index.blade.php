@@ -1,4 +1,4 @@
-@extends('front/inc/layout')
+@extends('front.inc.layout')
 
 @section('content')
 <div class="py-5 ">
@@ -14,7 +14,11 @@
             <div class="col-lg-12">
               <div class="blog-post">
                 <div class="blog-thumb">
-                  <img class="main-thumbnail" src="{{ $post->thumbnail }}" alt="">
+                  @if (isset($post->thumbnail))
+                  <img class="main-thumbnail" src="{{ $post->thumbnail }}" alt="Thumbnail">
+                  @else
+                  <img class="main-thumbnail" src="{{ asset('storage/blank.png') }}" alt="">
+                  @endif
                 </div>
                 <div class="down-content">
                  <h4><a href="{{ url("post-details/$post->id") }}">{{ $post->title }}</a></h4> 
@@ -29,15 +33,16 @@
                       <div class="col-6">
                         <ul class="post-tags">
                           <li><i class="fa fa-tags"></i></li>
-                          <li><a href="#">Beauty</a>,</li>
-                          <li><a href="#">Nature</a></li>
+                          @foreach ( $post->categories as $category )
+                          <li><a href="{{ url("category/$category->id") }}">{{ $category->category }}</a>,</li>
+                          @endforeach
                         </ul>
                       </div>
                       <div class="col-6">
                         <ul class="post-share">
                           <li><i class="fa fa-share-alt"></i></li>
-                          <li><a href="#">Facebook</a>,</li>
-                          <li><a href="#"> Twitter</a></li>
+                          <li><a href="http://www.facebook.com">Facebook</a>,</li>
+                          <li><a href="http://www.twitter.com"> Twitter</a></li>
                         </ul>
                       </div>
                     </div>

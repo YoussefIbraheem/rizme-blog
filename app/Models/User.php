@@ -28,6 +28,7 @@ class User extends Authenticatable implements FilamentUser
         'name',
         'email',
         'password',
+        'access_type'
     ];
 
     /**
@@ -60,9 +61,10 @@ class User extends Authenticatable implements FilamentUser
         'profile_photo_url',
     ];
 
-    public function canAccessFilament(): bool
+    public function canAccessFilament(): bool //to allow access to filament dashboard to only admins and mods
     {
         return ($this->access_type == 'admin' || $this->access_type == 'moderator') && $this->hasVerifiedEmail();
     }
 
+    
 }

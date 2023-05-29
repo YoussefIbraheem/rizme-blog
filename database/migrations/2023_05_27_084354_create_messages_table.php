@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
             $table->string('subject');
-            $table->string('name')->nullable();
+            $table->string('name');
             $table->string('email');
             $table->longText('body');
             $table->boolean('sorted')->default(false);

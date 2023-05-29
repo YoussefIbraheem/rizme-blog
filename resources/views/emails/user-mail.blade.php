@@ -1,4 +1,4 @@
-{{-- <x-mail::message> --}}
+<x-mail::message>
 Dear {{ $name }}
 <br>
 <br>
@@ -12,4 +12,4 @@ Visit Our Site
 
 Thanks,<br>
 Rizme Blog
-{{-- </x-mail::message> --}}
+</x-mail::message>
