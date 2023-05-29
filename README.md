@@ -120,6 +120,7 @@ Configurations in .env file
 3. **APP_URL** : make sure it's set on the correct local host displayed on your PHP artisan serve terminal (i.e: if your local host is on port http://localhost:8000 make sure it's set as same)
 4. **App_KEY** : make sure it's present and if not get to step 4 in the Installation section 
 5. **FILESYSTEM_DISK**: you'll mostly find it as "local" switch it to public then run the below command:
+6. **QUEUE_CONNECTION**: you'll find it as "sync" change is to "database"
 ```
 php artisan storage:link
 ```
