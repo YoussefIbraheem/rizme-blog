@@ -21,7 +21,7 @@ To install the Laravel blog project, follow the below steps:
 1. Clone the repository from GitHub.
 
 ```
-$ git clone https://github.com/YoussefIbraheem/rizme-blog.git
+git clone https://github.com/YoussefIbraheem/rizme-blog.git
 ```
 
 2. Install the dependencies using Composer.
@@ -33,19 +33,19 @@ composer install
 2. Install npm.
 
 ```
- npm install
+npm install
 ```
 
 3. Copy the `.env.example` file to `.env`.
 
 ```
- cp .env.example .env
+cp .env.example .env
 ```
 
 4. Generate a new application key.
 
 ```
- php artisan key:generate
+php artisan key:generate
 ```
 
 5. Configure the `.env` file with your database credentials.
@@ -53,24 +53,24 @@ composer install
 6. Migrate the database.
 
 ```
- php artisan migrate
+php artisan migrate
 ```
 
 7. Seed the database with sample data.
 
 ```
- php artisan db:seed
+php artisan db:seed
 ```
 
 8. Run the server.
 
 ```
- php artisan serve
+php artisan serve
 ```
 8. Run the npm. (in a separate terminal)
 
 ```
- npm run dev
+npm run dev
 ```
 
 
@@ -83,13 +83,13 @@ Once the project is installed, you can access the application in your browser at
 1. Run the schedule:work command to ensure that the scheduled commands are operating.
 
 ```
- php artisan schedule:work
+php artisan schedule:work
 ```
 
 2. Run the queue command to make sure that the queued functions are operating (this is important as the post function mainly relies on it!!).
 
 ```
- php artisan queue:work
+php artisan queue:work
 ```
 
 3. Once all the commands are run, a database will be created and an admin account will be created the credentials will be:
@@ -105,9 +105,12 @@ Configurations in .env file
 1.basics:
 --
 * inside the .env file, make sure these options are set correctly
-3. APP_URL : make sure it's set on the correct local host displayed on your PHP artisan serve terminal (i.e: if your local host is on port http://localhost:8000 make sure it's set as same)
-4. App_KEY : make sure it's present and if not get to step 4 in the Installation section 
-5. FILESYSTEM_DISK: you'll mostly find it as "local" switch it to public 
+3. **APP_URL** : make sure it's set on the correct local host displayed on your PHP artisan serve terminal (i.e: if your local host is on port http://localhost:8000 make sure it's set as same)
+4. **App_KEY** : make sure it's present and if not get to step 4 in the Installation section 
+5. **FILESYSTEM_DISK**: you'll mostly find it as "local" switch it to public then run the below command:
+```
+php artisan storage:link
+```
 
 2.Mail:
 --
@@ -128,6 +131,9 @@ https://youtu.be/T0Op3Qzz6Ms
 
 - setting up mailtrap
 https://youtu.be/yIoKD8HF5rU
+
+**Now You're all set up and able to access all app features**
+-------------------------------------------------------------
 
 APIs
 -----
