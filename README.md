@@ -67,7 +67,7 @@ $ php artisan db:seed
 ```
 $ php artisan serve
 ```
-8. Run the npm.
+8. Run the npm. (in a separate terminal)
 
 ```
 $ npm run dev
@@ -128,6 +128,26 @@ https://youtu.be/T0Op3Qzz6Ms
 
 - setting up mailtrap
 https://youtu.be/yIoKD8HF5rU
+
+*APIs
+-----
+1.Get All Posts (GET) url:
+* http://localhost/api/get-all-posts
+* this url will return all the posts in the following instance:
+```
+"data": [
+{
+"id": 13,
+"user_id": 5,
+"title": "Pellentesque auctor neque nec",
+"thumbnail": null,
+"published": 1,
+"body": "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Fusce egestas elit eget lorem. Maecenas malesuada. Vivamus in erat ut urna cursus vestibulum. Praesent venenatis metus at tortor pulvinar varius.",
+"created_at": "2023-05-29T16:08:17.000000Z",
+"updated_at": "2023-05-29T16:08:17.000000Z"
+},
+```
+
 
 Features
 --------
