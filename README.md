@@ -103,14 +103,14 @@ $ php artisan queue:work
 Configurations in .env file
 -----
 1. basics:
--
+--
 * inside the .env file, make sure these options are set correctly
-1. APP_URL : make sure it's set on the correct local host displayed on your PHP artisan serve terminal (i.e: if your local host is on port http://localhost:8000 make sure it's set as same)
-2. App_KEY : make sure it's present and if not get to step 4 in the Installation section 
-3. FILESYSTEM_DISK: you'll mostly find it as "local" switch it to public 
+3. APP_URL : make sure it's set on the correct local host displayed on your PHP artisan serve terminal (i.e: if your local host is on port http://localhost:8000 make sure it's set as same)
+4. App_KEY : make sure it's present and if not get to step 4 in the Installation section 
+5. FILESYSTEM_DISK: you'll mostly find it as "local" switch it to public 
 
 2.Mail:
--
+--
 **This is really important to ensure that the mailer is operating**
 * make sure that your email configuration is set as the following:
 - MAIL_MAILER=smtp
