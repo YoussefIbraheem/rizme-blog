@@ -7,8 +7,10 @@ namespace Database\Seeders;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Comment;
+use App\Models\Message;
 use App\Models\Category;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,11 +19,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-         User::factory(10)->create();
+        //to fill all tables with one command (migrate --seed)
+         User::factory(4)->create();
          Post::factory(10)->create();
-         Comment::factory(10)->create();
+         Comment::factory(5)->create();
          Category::factory(5)->create();
-        \App\Models\User::factory()->create([
+         Message::factory(5)->create();
+         $categories_posts = DB::table('categories_posts'); 
+         for($i = 0 ; $i < 5 ; $i++){ // to fill categories_posts table (pivot)
+            $categories_posts->insert([
+                'category_id' => Category::all()->random()->id ,
+                'post_id' =>Post::all()->random()->id 
+                ]);
+         }
+        \App\Models\User::factory()->create([ // to generate admin with god access
             'name' => 'admin',
             'email' => 'admin@rizme.com',
             'password' => bcrypt('password'),

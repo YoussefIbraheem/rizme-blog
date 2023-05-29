@@ -19,7 +19,7 @@ class PostFactory extends Factory
      */
     public function definition(): array
     {
-        $faker=Faker::create();
+        $faker=Faker::create(); //return random data
         return [
             'title' =>$faker->word(),
             'body' => $faker->paragraph(),

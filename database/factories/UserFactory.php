@@ -24,7 +24,7 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-        $faker = Faker::create();
+        $faker = Faker::create(); //return random data
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),

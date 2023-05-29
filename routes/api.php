@@ -19,5 +19,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//get all posts api route
 Route::get('/get-all-posts',[ApiPostController::class,'getPostsApi']);
+
+//get single post api route
 Route::get('/get-single-post/{id}',[ApiPostController::class,'getSinglePostApi']);

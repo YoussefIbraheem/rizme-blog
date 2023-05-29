@@ -25,7 +25,6 @@ class PostController extends Controller
     }
 
     // view posts with the given category
-
     public function viewHomePagePostsByCategory($id)
     { 
            $posts = Post::whereHas('categories' , function($query) use ($id) {
@@ -64,25 +63,25 @@ class PostController extends Controller
     
     //create image name and store
     if(!empty($request->thumbnail)){ //work only if thumbnail is added
-    $thumbnail = Storage::putFile('thumbnails',$request->thumbnail);
+    $thumbnail = Storage::putFile('thumbnails',$request->thumbnail); //store thumbnail
     $thumbnail =  'storage/'.$thumbnail;//add "storage/" to match the correct directory in html
     } 
-    $loggedUser = Auth::user()->id;
+    $loggedUser = Auth::user()->id; //get logged in user id
     
     
 
     $newPost = [// save the post to the database
         'title'=>$request->title,
         'body'=>$request->body,
-        'thumbnail'=>$thumbnail,
+        'thumbnail'=>$thumbnail, //add image path with "storage/" included
         'user_id'=>$loggedUser
     ];
 
-   // this creates a queue for 10 seconds then create the new post
+   // creates a queue for 10 seconds then create the new post
  PostFunctions::dispatch($newPost , $request->categories)->delay(now()->addSeconds(10));
 
  // redirect to the post's show page
-    
+ session()->flash('success',"Post Added Successfully It will be displayed in the next 5-10 seconds!");
     return redirect()->back();
 }
 
@@ -103,11 +102,11 @@ class PostController extends Controller
                 $imageDirectory = substr($post->thumbnail,8); //remove the word "storage/"
                 Storage::delete($imageDirectory); //delete the image
             }
-            $thumbnail = Storage::putFile('thumbnails',$request->thumbnail);
-            $thumbnail =  'storage/'.$thumbnail;
-        }else{
-            if(!$request->checkThumbnail){
-                $thumbnail = $post->thumbnail;
+            $thumbnail = Storage::putFile('thumbnails',$request->thumbnail); // save the new thumbnail
+            $thumbnail =  'storage/'.$thumbnail; // the word "storage/"
+        }else{//if there is no new image
+            if(!$request->checkThumbnail){ //check if user wants to remove the image or not
+                $thumbnail = $post->thumbnail; //keep the old image
             }
         }
         
@@ -116,12 +115,12 @@ class PostController extends Controller
         $post->update([
             'title'=>$request->title,
             'body'=>$request->body,
-            'thumbnail'=>$thumbnail,
+            'thumbnail'=>$thumbnail, //add image path with "storage/" included
             'user_id'=>$loggedUser
         ]);
 
         // redirect to the post's show page
-        
+        session()->flash('success',"Post Updated Successfully");
         return redirect()->back();
     }
 
@@ -130,9 +129,10 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         if(!empty($post->thumbnail)){//check if there is an image
             $imageDirectory = substr($post->thumbnail,8); //remove the word "storage/"
-            Storage::delete($imageDirectory);
+            Storage::delete($imageDirectory); //remove the image directory
         }
         $post->delete();
+        session()->flash('success',"Post Deleted Successfully");
            return redirect()->back();
     }
 
@@ -148,6 +148,7 @@ class PostController extends Controller
             'user_id'=>$loggedUser,
             'post_id'=>$id
         ]);
+        session()->flash('success',"Comment Added Successfully");
         return redirect()->back();
     }
 
@@ -156,6 +157,7 @@ class PostController extends Controller
     public function deleteComment($id){
         $comment = Comment::findOrFail($id);
         $comment->delete();
+        session()->flash('success',"Comment Deleted Successfully");
         return redirect()->back();
     }
   

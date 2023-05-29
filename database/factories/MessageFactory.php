@@ -16,9 +16,13 @@ class MessageFactory extends Factory
      */
     public function definition(): array
     {
-        $faker=Faker::create();
+        $faker=Faker::create(); //return random data
         return [
-            
+            'subject'=>$faker->word(),
+            'body'=>$faker->paragraph(),
+            'email'=>$faker->email(),
+            'name'=>$faker->name(),
+            'sorted'=>$faker->boolean()
         ];
     }
 }

@@ -32,20 +32,20 @@ class PostResource extends Resource
         return $form
             ->schema([
                 Card::make()->schema([
-                    TextInput::make('title')
+                    TextInput::make('title') //post title with max length of 100 characters
                     ->required()
                     ->minLength(1)
-                    ->maxLength(100)
+                    ->maxLength(100)->required()
                     ,
-                    Textarea::make('body')
+                    Textarea::make('body')//post body with max length of 2000 characters
                     ->required()
                     ->minLength(1)
-                    ->maxLength(2000)
+                    ->maxLength(2000)->required()
                     ,
-                    FileUpload::make('thumbnail')
+                    FileUpload::make('thumbnail') //post thumbnail optional
                     ->image()
                     ,
-                    Select::make('categories')->multiple()
+                    Select::make('categories')->multiple() // post category optional
                     ->relationship('categories', 'category')
                 ])
               
@@ -69,6 +69,7 @@ class PostResource extends Resource
             ])
             ->actions([
                 Tables\Actions\DeleteAction::make(),
+                Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

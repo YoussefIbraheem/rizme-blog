@@ -23,6 +23,7 @@ class MessageController extends Controller
         ]);
         $repliedToMessage = Message::findOrFail($id);
         Mail::to($repliedToMessage->email)->queue(new UserMail($validatedData , $repliedToMessage ));
+        session()->flash('success',"Message sent Successfully");
         return redirect()->back();
     }
 

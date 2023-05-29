@@ -10,7 +10,7 @@ class UserPolicy
     /**
      * Determine whether the user can view any models.
      */
-    public function viewAny(User $user): bool
+    public function viewAny(User $user): bool //only admins are allowed to view the users resource so they can delete users and change access type to mods and users
     {
         return $user->access_type == 'admin';
     }

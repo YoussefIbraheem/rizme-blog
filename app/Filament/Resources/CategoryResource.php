@@ -18,14 +18,14 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class CategoryResource extends Resource
 {
     protected static ?string $model = Category::class;
-    protected static ?string $navigationGroup = 'Options';
-    protected static ?string $navigationIcon = 'heroicon-o-tag';
+    protected static ?string $navigationGroup = 'Options'; //added to options dropdown
+    protected static ?string $navigationIcon = 'heroicon-o-tag'; // tag icon
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-               TextInput::make('category')
+               TextInput::make('category')->required() //add category
             ]);
     }
 
@@ -33,7 +33,7 @@ class CategoryResource extends Resource
     {
         return $table
             ->columns([
-               TextColumn::make('category')
+               TextColumn::make('category') //show category
             ])
             ->filters([
                 //

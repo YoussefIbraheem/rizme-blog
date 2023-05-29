@@ -19,14 +19,9 @@ class CategoryFactory extends Factory
      */
     public function definition(): array
     {
-        $faker=Faker::create();
-        $categories_posts = DB::table('categories_posts');
-        $categories_posts->insert([
-        'category_id' => Category::all()->random()->id ,
-        'post_id' =>Post::all()->random()->id 
-        ]);
+        $faker=Faker::create(); //return random data
         return [
-            'category'=>$faker->word(),
+            'category'=>$faker->word(), 
              
         ];
     }

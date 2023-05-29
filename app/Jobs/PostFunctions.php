@@ -30,7 +30,7 @@ class PostFunctions implements ShouldQueue
     public function handle(): void
     {
 
-        $this->newPost = Post::create($this->newPost);
+        $this->newPost = Post::create($this->newPost); // store a new post
 
         foreach ($this->selectedCategories as $category_id) { //save each selected category to the created post and save it in the pivot table
             DB::table('categories_posts')->insert([

@@ -1,6 +1,7 @@
 @extends('front/inc/layout')
 
 @section('content')
+
 <div class="heading-page header-text">
     <section class="page-heading">
       <div class="container">
@@ -14,8 +15,13 @@
         </div>
       </div>
     </section>
-  </div> 
-
+  </div>
+  <div class="container w-50 text-center">
+    <div class="row">
+      @include('front.inc.error')
+      @include('front.inc.success')
+    </div>
+  </div>
 <section class="p-5">
 <table class="table table-striped">
     <thead>

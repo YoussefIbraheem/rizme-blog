@@ -55,7 +55,7 @@
                             <ul class="post-tags">
                               <li><i class="fa fa-tags"></i></li>
                               @foreach ($post->categories as $category )
-                              <li><a href="#">{{ $category->category }}</a>,</li>
+                              <li><a href="{{ url("category/$category->id") }}">{{ $category->category }}</a>,</li>
                               @endforeach
                             </ul>
                           </div>

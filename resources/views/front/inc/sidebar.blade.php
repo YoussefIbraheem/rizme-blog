@@ -1,18 +1,9 @@
 <div class="col-lg-4">
     <div class="sidebar">
       <div class="row">
-          @if ($errors->any())
-          <div class="col-lg-12">
-              <div class="alert alert-danger">
-                  <ul>
-                      @foreach ($errors->all() as $error)
-                          <li>{{ $error }}</li>
-                      @endforeach
-                  </ul>
-              </div>
-            </div>
-            @endif
-        
+        <div></div>
+        @include('front.inc.error')
+        @include('front.inc.success')
         <div class="col-lg-12">
           <button type="button" class=" post-btn" data-bs-toggle="modal" data-bs-target="#createPost">
             Create Post

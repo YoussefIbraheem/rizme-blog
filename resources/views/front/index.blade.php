@@ -34,15 +34,15 @@
                         <ul class="post-tags">
                           <li><i class="fa fa-tags"></i></li>
                           @foreach ( $post->categories as $category )
-                          <li><a href="#">{{ $category->category }}</a>,</li>
+                          <li><a href="{{ url("category/$category->id") }}">{{ $category->category }}</a>,</li>
                           @endforeach
                         </ul>
                       </div>
                       <div class="col-6">
                         <ul class="post-share">
                           <li><i class="fa fa-share-alt"></i></li>
-                          <li><a href="#">Facebook</a>,</li>
-                          <li><a href="#"> Twitter</a></li>
+                          <li><a href="http://www.facebook.com">Facebook</a>,</li>
+                          <li><a href="http://www.twitter.com"> Twitter</a></li>
                         </ul>
                       </div>
                     </div>
