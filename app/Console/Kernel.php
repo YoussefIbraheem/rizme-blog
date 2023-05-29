@@ -20,6 +20,8 @@ class Kernel extends ConsoleKernel
             DB::table('messages')->where('sorted',true)->delete();
         })->daily();
 
+        $schedule->command('db:seed dailyPostSeeder')->daily();
+
     }
 
     /**

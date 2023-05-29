@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\PostFunctions;
 use App\Models\Post;
 use App\Models\Comment;
 use App\Models\Category;
@@ -16,7 +17,9 @@ class PostController extends Controller
     //view all posts
     public function viewHomePagePosts(){
        
-        $posts = Post::where('published',1)->get();
+        
+
+        $posts = Post::where('published',1)->orderByDesc('created_at')->get();
        
         return view('front.index', compact('posts'));
     }
@@ -27,14 +30,14 @@ class PostController extends Controller
     { 
            $posts = Post::whereHas('categories' , function($query) use ($id) {
             $query->where('categories.id',$id);
-           })->get();
+           })->orderByDesc('created_at')->get();
            return view('front.index', compact('posts'));
     }
     
     //view user posts
     public function myBlogPosts(){
         $user = Auth::user()->id;
-        $posts = Post::Where('user_id', '=', $user)->get();
+        $posts = Post::Where('user_id', '=', $user)->orderByDesc('created_at')->get();
         return view('front.my-blog' , compact('posts'));
     }
 
@@ -66,20 +69,19 @@ class PostController extends Controller
     } 
     $loggedUser = Auth::user()->id;
     
-    $newPost = Post::create([// save the post to the database
+    
+
+    $newPost = [// save the post to the database
         'title'=>$request->title,
         'body'=>$request->body,
         'thumbnail'=>$thumbnail,
         'user_id'=>$loggedUser
-    ]);
- 
-    foreach ($request->categories as $category_id) { //save each selected category to the created post and save it in the pivot table
-        DB::table('categories_posts')->insert([
-                'post_id' => $newPost->id,
-                'category_id' => $category_id
-            ]);
-    }
-    // redirect to the post's show page
+    ];
+
+   // this creates a queue for 10 seconds then create the new post
+ PostFunctions::dispatch($newPost , $request->categories)->delay(now()->addSeconds(10));
+
+ // redirect to the post's show page
     
     return redirect()->back();
 }
