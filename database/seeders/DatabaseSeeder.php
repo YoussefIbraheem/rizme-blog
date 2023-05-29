@@ -32,11 +32,23 @@ class DatabaseSeeder extends Seeder
                 'post_id' =>Post::all()->random()->id 
                 ]);
          }
-        \App\Models\User::factory()->create([ // to generate admin with god access
+        User::factory()->create([ // to generate admin with god access
             'name' => 'admin',
             'email' => 'admin@rizme.com',
             'password' => bcrypt('password'),
             'access_type'=>'admin'
+        ]);
+        User::factory()->create([ // to generate admin with god access
+            'name' => 'moderator',
+            'email' => 'moderator@rizme.com',
+            'password' => bcrypt('password'),
+            'access_type'=>'moderator'
+        ]);
+        User::factory()->create([ // to generate admin with god access
+            'name' => 'user',
+            'email' => 'user@rizme.com',
+            'password' => bcrypt('password'),
+            'access_type'=>'user'
         ]);
     }
 }
