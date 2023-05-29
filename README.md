@@ -1,9 +1,18 @@
-Documentation for Laravel Blog Project
+Rizme Blog.
 =====================================
 
 Introduction
 ------------
-This documentation provides an overview of a Laravel blog project that has been developed using Jetstream, Filament, Mailer, and Laravel/ui packages. The project allows users to send messages, receive emails, create, update, and delete posts, and comment on other posts.
+Welcome to Rizme Blog, a dynamic and user-friendly blogging platform built on the powerful Laravel framework. With Rizme Blog, users can easily create, update, and delete posts, as well as engage with other users through comments. Our goal with this project was to provide a seamless user experience while giving administrators the tools they need to maintain a high standard of content quality. Whether you're a casual blogger or a dedicated content creator, Rizme Blog has everything you need to bring your ideas to life. So, let's dive in and explore what makes this project so special!
+
+Requirements
+------------
+
+* PHP 8
+* Composer
+* XAMPP (or another web server software)
+* Node.js (and npm)
+
 
 Installation
 ------------
@@ -12,13 +21,19 @@ To install the Laravel blog project, follow the below steps:
 1. Clone the repository from the GitHub.
 
 ```
-$ git clone https://github.com/<username>/laravel-blog.git
+$ git clone https://github.com/YoussefIbraheem/rizme-blog.git
 ```
 
 2. Install the dependencies using Composer.
 
 ```
 $ composer install
+```
+
+2. Install npm.
+
+```
+$ npm install
 ```
 
 3. Copy the `.env.example` file to `.env`.
@@ -52,10 +67,36 @@ $ php artisan db:seed
 ```
 $ php artisan serve
 ```
+8. Run the npm.
+
+```
+$ npm run dev
+```
+
 
 Usage
 -----
 Once the project is installed, you can access the application in your browser at `http://localhost:8000`.
+
+* The following commands needs to be run on separate terminals
+
+1. Run the schedule:work command to ensure that the scheduled commands are operating.
+
+```
+$ php artisan schedule:work
+```
+
+2. Run the queue command to make sure that the queued functions are operating (this is important as the post function mainly relies on it!!).
+
+```
+$ php artisan queue:work
+```
+Configurations in .env file
+-----
+1.basics:
+* inside the .env file, make sure these options are set correctly
+1.
+
 
 Features
 --------
