@@ -129,11 +129,11 @@ https://youtu.be/T0Op3Qzz6Ms
 - setting up mailtrap
 https://youtu.be/yIoKD8HF5rU
 
-*APIs
+APIs
 -----
 1.Get All Posts (GET) url:
-* http://localhost/api/get-all-posts
-* this url will return all the posts in the following instance:
+- http://localhost/api/get-all-posts
+- this url will return all the posts in the following instance:
 ```
 "data": [
 {
@@ -146,6 +146,25 @@ https://youtu.be/yIoKD8HF5rU
 "created_at": "2023-05-29T16:08:17.000000Z",
 "updated_at": "2023-05-29T16:08:17.000000Z"
 },
+```
+2.Get a single Post (GET) url:
+- http://localhost:8001/api/get-single-post/{post_id}
+- this will return only one selected post by adding the required post id in the {post_id} section
+- please follow the below instance 
+
+```
+-//http://localhost:8001/api/get-single-post/1
+-//this will return:
+"data": {
+"id": 1,
+"user_id": 4,
+"title": "beatae",
+"thumbnail": "https://via.placeholder.com/640x480.png/00ccff?text=animals+dolorum",
+"published": 1,
+"body": "Consectetur esse et cumque et architecto corporis. Eaque praesentium animi est accusantium nesciunt. Minima non soluta repudiandae aut est. Perspiciatis minima assumenda ut consequatur eligendi.",
+"created_at": "2023-05-29T14:14:03.000000Z",
+"updated_at": "2023-05-29T14:14:03.000000Z"
+}
 ```
 
 
