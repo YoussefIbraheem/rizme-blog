@@ -24,50 +24,62 @@ To install the Laravel blog project, follow the below steps:
 git clone https://github.com/YoussefIbraheem/rizme-blog.git
 ```
 
-2. Install the dependencies using Composer.
+2. Access the project.
+
+```
+cd rizme-blog
+```
+
+3. Install the dependencies using Composer.
 
 ```
 composer install
 ```
 
-2. Install npm.
+4.Run composer update.
+
+```
+composer update
+```
+
+5. Install npm.
 
 ```
 npm install
 ```
 
-3. Copy the `.env.example` file to `.env`.
+6. Copy the `.env.example` file to `.env`.
 
 ```
 cp .env.example .env
 ```
 
-4. Generate a new application key.
+7. Generate a new application key.
 
 ```
 php artisan key:generate
 ```
 
-5. Configure the `.env` file with your database credentials.
+8. Configure the `.env` file with your database credentials.
 
-6. Migrate the database.
+9. Migrate the database.
 
 ```
 php artisan migrate
 ```
 
-7. Seed the database with sample data.
+10. Seed the database with sample data.
 
 ```
 php artisan db:seed
 ```
 
-8. Run the server.
+11. Run the server.
 
 ```
 php artisan serve
 ```
-8. Run the npm. (in a separate terminal)
+12. Run the npm. (in a separate terminal)
 
 ```
 npm run dev
