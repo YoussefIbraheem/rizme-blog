@@ -18,7 +18,7 @@ Installation
 ------------
 To install the Laravel blog project, follow the below steps:
 
-1. Clone the repository from the GitHub.
+1. Clone the repository from GitHub.
 
 ```
 $ git clone https://github.com/YoussefIbraheem/rizme-blog.git
@@ -78,7 +78,7 @@ Usage
 -----
 Once the project is installed, you can access the application in your browser at `http://localhost:8000`.
 
-* The following commands needs to be run on separate terminals
+* The following commands need to be run on separate terminals
 
 1. Run the schedule:work command to ensure that the scheduled commands are operating.
 
@@ -94,24 +94,24 @@ $ php artisan queue:work
 
 3. Once all the commands are run, a database will be created and an admin account will be created the credentials will be:
 
-//email : admin@rizme.com
-//password: password
+* Email : admin@rizme.com
+* Password: password
 
 
-
+**Note**: All Accounts password are "password", they can be changed from the profile tab
 
 Configurations in .env file
 -----
-1.basics:
+1. basics:
 -
 * inside the .env file, make sure these options are set correctly
-1. APP_URL : make sure it's set on the correct local host displayed on you php artisan serve terminal (i.e: if your local host is on port http://localhost:8000 make sure it's set as same)
+1. APP_URL : make sure it's set on the correct local host displayed on your PHP artisan serve terminal (i.e: if your local host is on port http://localhost:8000 make sure it's set as same)
 2. App_KEY : make sure it's present and if not get to step 4 in the Installation section 
 3. FILESYSTEM_DISK: you'll mostly find it as "local" switch it to public 
 
 2.Mail:
 -
-**this is really important to ensure that mailer is operating**
+**This is really important to ensure that the mailer is operating**
 * make sure that your email configuration is set as the following:
 - MAIL_MAILER=smtp
 - MAIL_HOST=smtp.gmail.com
@@ -120,10 +120,10 @@ Configurations in .env file
 - MAIL_PASSWORD= {{YOUR EMAIL PASSWORD}}
 - MAIL_ENCRYPTION=ssl
 - MAIL_FROM_ADDRESS= "{{YOUR EMAIL}}"
-- MAIL_FROM_NAME="From Rizme Blog"
+- MAIL_FROM_NAME=" From Rizme Blog"
 
 * whether you're using google mail or mailtrap or any other mailing services, make sure to follow any of their instructions
-//setting up google mailer requires App password as your gmail password will Not work for security purposes so please find the instructions in the video to generate app password:
+//setting up google mailer requires an App password as your Gmail password will Not work for security purposes so please find the instructions in the video to generate an app password:
 https://youtu.be/T0Op3Qzz6Ms
 
 //setting up mailtrap
@@ -135,24 +135,24 @@ The Laravel blog project has the following features:
 
 1. User Authentication - Jetstream
    - The project uses Jetstream for user authentication, which includes registration, login, and logout functionality.
-   - Each of the 3 access types (admin , user , moderator) has their privilages and limitations. 
+   - Each of the 3 access types (admin, user, moderator) has its privileges and limitations. 
 2. Dashboard - Filament
-   - Only Admin and Moderators are allowed to access to the dashboard.
-   - Moderators are allowed to add update and delete posts or unpublish them till furhter notice.
-   - Admins has more access as they has the same priviliges and they have access to users tab where they can change the access type to either moderators or users.
+   - Only Admin and Moderators are allowed to access the dashboard.
+   - Moderators are allowed to add update and delete posts or unpublish them till further notice.
+   - Admins have more access as they have the same privileges and they have access to the users tab where they can change the access type to either moderators or users.
    - there're several status widgets to display the status of every table.
 
 3. Email Notifications - Mailer
-   - Users are allowed to send message (no emails) as cases to be stores in the database.
-   - once the user send a message with a valid email address an automated email will be sent to provide the timeframe for the issue to be sorted.
+   - Users are allowed to send messages (no emails) as cases to be stored in the database.
+   - once the user sends a message with a valid email address an automated email will be sent to provide the timeframe for the issue to be sorted.
    - Mods and admin can respond to users via email.
-   - if the issue got sorted mods and admin can click on the sorted button and if its correct it means it has been sorted and will scheduled to be removed from the database automatically.
+   - if the issue got sorted mods and admin can click on the sorted button and if it's correct it means it has been sorted and will scheduled to be removed from the database automatically.
 
-4. CRUD Operations for Posts - Laravel/ui
+4. CRUD Operations for Posts - Laravel/UI
    - Users can create, read, update, and delete their posts.
    - Users can view all posts and filter them by category.
    - Users can view their own posts on their profile page.
-   - Users can send their complaints as message and will get responded to via email.
+   - Users can send their complaints as messages and will get responded to via email.
 
 5. Comment System
    - Users can comment on other users' posts.
@@ -161,11 +161,11 @@ The Laravel blog project has the following features:
    
 Other Features
 --------
-* In the beginning of the day, a new post will automatically be added as a good morning
+* At the beginning of the day, a new post will automatically be added as a good morning
 * Sorted messages will be automatically deleted to avoid memory overload or running out of space
-* When the User creates a new post, the action will be set in queue between 5 and 10 seconds to be created to enhance performance 
-* When an email is being sent, the action will be set in queue for 3 seconds to be send to enhance performance 
+* When the User creates a new post, the action will be set in a queue between 5 and 10 seconds to be created to enhance performance 
+* When an email is being sent, the action will be set in a queue for 3 seconds to be sent to enhance performance 
 
 Conclusion
 ----------
-The Laravel blog project provides a comprehensive solution for creating a simple blog with messaging and email notification functionality. The project uses Jetstream, Filament, Mailer, and Laravel/ui packages to provide users with an easy-to-use interface for creating and managing their blog.
+The Laravel blog project provides a comprehensive solution for creating a simple blog with messaging and email notification functionality. The project uses Jetstream, Filament, Mailer, and Laravel/ui packages to provide users with an easy-to-use interface for creating and managing their blogs.
