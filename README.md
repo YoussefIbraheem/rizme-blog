@@ -111,7 +111,7 @@ Configurations in .env file
 
 2.Mail:
 -
-** this is really important to ensure that mailer is operating
+**this is really important to ensure that mailer is operating**
 * make sure that your email configuration is set as the following:
 - MAIL_MAILER=smtp
 - MAIL_HOST=smtp.gmail.com
