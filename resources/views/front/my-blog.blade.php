@@ -32,7 +32,7 @@
                     @if (isset($post->thumbnail))
                         <img class="main-thumbnail" src="{{ $post->thumbnail }}" alt="Thumbnail">
                         @else
-                        <img class="main-thumbnail" src="{{ asset('storage/blank.png') }}" alt="">
+                        <img class="main-thumbnail" src="{{ asset('assets/images/blank.png') }}" alt="">
                         @endif
                     
                     <div class="down-content">
