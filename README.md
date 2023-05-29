@@ -24,6 +24,12 @@ To install the Laravel blog project, follow the below steps:
 git clone https://github.com/YoussefIbraheem/rizme-blog.git
 ```
 
+1. Access the project.
+
+```
+cd rizme-blog
+```
+
 2. Install the dependencies using Composer.
 
 ```
