@@ -27,25 +27,25 @@ $ git clone https://github.com/YoussefIbraheem/rizme-blog.git
 2. Install the dependencies using Composer.
 
 ```
-$ composer install
+composer install
 ```
 
 2. Install npm.
 
 ```
-$ npm install
+ npm install
 ```
 
 3. Copy the `.env.example` file to `.env`.
 
 ```
-$ cp .env.example .env
+ cp .env.example .env
 ```
 
 4. Generate a new application key.
 
 ```
-$ php artisan key:generate
+ php artisan key:generate
 ```
 
 5. Configure the `.env` file with your database credentials.
@@ -53,24 +53,24 @@ $ php artisan key:generate
 6. Migrate the database.
 
 ```
-$ php artisan migrate
+ php artisan migrate
 ```
 
 7. Seed the database with sample data.
 
 ```
-$ php artisan db:seed
+ php artisan db:seed
 ```
 
 8. Run the server.
 
 ```
-$ php artisan serve
+ php artisan serve
 ```
 8. Run the npm. (in a separate terminal)
 
 ```
-$ npm run dev
+ npm run dev
 ```
 
 
@@ -83,22 +83,22 @@ Once the project is installed, you can access the application in your browser at
 1. Run the schedule:work command to ensure that the scheduled commands are operating.
 
 ```
-$ php artisan schedule:work
+ php artisan schedule:work
 ```
 
 2. Run the queue command to make sure that the queued functions are operating (this is important as the post function mainly relies on it!!).
 
 ```
-$ php artisan queue:work
+ php artisan queue:work
 ```
 
 3. Once all the commands are run, a database will be created and an admin account will be created the credentials will be:
 
 * Email : admin@rizme.com
-* Password: password
+* Password: password (in lower cases)
 
 
-**Note**: All Accounts password are "password", they can be changed from the profile tab
+**Note**: All Accounts password are "password"(in lower cases), they can be changed from the profile tab
 
 Configurations in .env file
 -----
