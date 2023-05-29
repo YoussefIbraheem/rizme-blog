@@ -113,14 +113,14 @@ Configurations in .env file
 -
 ** this is really important to ensure that mailer is operating
 * make sure that your email configuration is set as the following:
-MAIL_MAILER=smtp
-MAIL_HOST=smtp.gmail.com
-MAIL_PORT=587
-MAIL_USERNAME= {{YOUR EMAIL}}
-MAIL_PASSWORD= {{YOUR EMAIL PASSWORD}}
-MAIL_ENCRYPTION=ssl
-MAIL_FROM_ADDRESS= "{{YOUR EMAIL}}"
-MAIL_FROM_NAME="From Rizme Blog"
+- MAIL_MAILER=smtp
+- MAIL_HOST=smtp.gmail.com
+- MAIL_PORT=587
+- MAIL_USERNAME= {{YOUR EMAIL}}
+- MAIL_PASSWORD= {{YOUR EMAIL PASSWORD}}
+- MAIL_ENCRYPTION=ssl
+- MAIL_FROM_ADDRESS= "{{YOUR EMAIL}}"
+- MAIL_FROM_NAME="From Rizme Blog"
 
 * whether you're using google mail or mailtrap or any other mailing services, make sure to follow any of their instructions
 //setting up google mailer requires App password as your gmail password will Not work for security purposes so please find the instructions in the video to generate app password:
