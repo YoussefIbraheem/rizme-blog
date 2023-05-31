@@ -75,6 +75,9 @@
                 <li class="nav-item">
                   <a href="{{ url('/login') }}" class="nav-link">login</a>
                 </li>
+                <li class="nav-item">
+                  <a href="{{ url('/register') }}" class="nav-link">Register</a>
+                </li>
                 @endif
               </li>
             </ul>
